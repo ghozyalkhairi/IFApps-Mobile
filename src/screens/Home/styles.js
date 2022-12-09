@@ -29,7 +29,7 @@ const Styles = StyleSheet.create({
     color: colors.neutral,
   },
   profil: {
-    marginLeft: 8,
+    marginLeft: 12,
   },
 })
 
