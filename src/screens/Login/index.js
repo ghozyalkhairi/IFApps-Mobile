@@ -2,7 +2,7 @@ import {Image, SafeAreaView, Text, TextInput, View} from 'react-native'
 import Button from '../../components/Button'
 import Styles from './styles'
 
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <SafeAreaView style={Styles.container}>
       <Image
@@ -19,7 +19,8 @@ const Login = () => {
         </View>
         <Button text="Login" />
         <Text>
-          Belum punya akun? <Text>Daftar</Text>
+          Belum punya akun?
+          <Text onPress={() => navigation.navigate('Register')}>Daftar</Text>
         </Text>
       </View>
     </SafeAreaView>
