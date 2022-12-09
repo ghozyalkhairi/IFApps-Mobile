@@ -4,11 +4,14 @@ import Styles from './styles'
 const Home = () => {
   return (
     <SafeAreaView style={Styles.container}>
-      <View styles={Styles.row}>
-        <Image source={require('../../assets/images/foto.png')} />
-        <View>
-          <Text>Selamat Datang</Text>
-          <Text>Rizky Wahyu Prasetyo</Text>
+      <View style={Styles.row}>
+        <Image
+          style={Styles.foto}
+          source={require('../../assets/images/foto.png')}
+        />
+        <View style={Styles.profil}>
+          <Text style={Styles.subtitle}>Selamat Datang</Text>
+          <Text style={Styles.title}>Rizky Wahyu Prasetyo</Text>
         </View>
       </View>
     </SafeAreaView>
