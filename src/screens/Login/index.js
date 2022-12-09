@@ -9,14 +9,19 @@ const Login = () => {
         style={Styles.logo}
         source={require('../../assets/images/logo.png')}
       />
-      <Text>Login</Text>
-      <View style={Styles.input}>
-        <TextInput placeholder="email" />
+      <View style={Styles.form}>
+        <Text style={Styles.title}>Login</Text>
+        <View style={Styles.input}>
+          <TextInput placeholder="email" />
+        </View>
+        <View style={Styles.input}>
+          <TextInput placeholder="password" />
+        </View>
+        <Button text="Login" />
+        <Text>
+          Belum punya akun? <Text>Daftar</Text>
+        </Text>
       </View>
-      <View style={Styles.input}>
-        <TextInput placeholder="password" />
-      </View>
-      <Button text="Login" />
     </SafeAreaView>
   )
 }
