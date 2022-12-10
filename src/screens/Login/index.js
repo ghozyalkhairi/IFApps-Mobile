@@ -23,7 +23,11 @@ const Login = ({navigation}) => {
             <PasswordIcon />
             <TextInput style={Styles.textInput} placeholder="password" />
           </View>
-          <Button text="Login" onPress={() => navigation.navigate('IFApps')} />
+          <Button
+            style={{marginTop: 8}}
+            text="Login"
+            onPress={() => navigation.navigate('IFApps')}
+          />
           <Text style={Styles.keterangan}>
             Belum punya akun?{' '}
             <Text
