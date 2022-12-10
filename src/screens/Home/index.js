@@ -1,6 +1,7 @@
 import {Image, SafeAreaView, Text, View} from 'react-native'
 import ProposalIcon from '../../assets/icons/bimbingan.svg'
 import MenuList from '../../components/MenuList'
+import TabList from '../../components/TabList'
 import Styles from './styles'
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
         source={require('../../assets/images/banner.png')}
       />
       <MenuList />
+      <TabList />
     </SafeAreaView>
   )
 }

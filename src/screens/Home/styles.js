@@ -3,9 +3,10 @@ import {colors} from '../../theme'
 
 const Styles = StyleSheet.create({
   container: {
-    marginTop: 50,
+    marginTop: 30,
     marginBottom: 22,
     marginHorizontal: 22,
+    height: '100%',
   },
   row: {
     flexDirection: 'row',
