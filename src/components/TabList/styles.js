@@ -13,13 +13,13 @@ const Styles = StyleSheet.create({
     marginRight: 28,
     borderBottomWidth: 2,
     borderColor: colors.other,
-    height: '14%',
+    height: '60%',
   },
   itemContainerActive: {
     marginRight: 28,
     borderBottomWidth: 2,
     borderColor: colors.primary,
-    height: '14%',
+    height: '60%',
   },
   text: {
     color: colors.secondary,
@@ -29,6 +29,22 @@ const Styles = StyleSheet.create({
     color: colors.primary,
     fontSize: 16,
     fontWeight: '500',
+  },
+  detail: {
+    marginBottom: 90,
+  },
+  status: {
+    fontSize: 14,
+    color: colors.secondary,
+  },
+  statusValue: {
+    fontSize: 24,
+    color: colors.primary,
+    marginVertical: 6,
+  },
+  date: {
+    fontSize: 14,
+    color: colors.secondary,
   },
 })
 

@@ -1,4 +1,6 @@
 import {Image, SafeAreaView, Text, TextInput, View} from 'react-native'
+import {useState} from 'react'
+import {authLogin} from '../../request'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import EmailIcon from '../../assets/icons/email.svg'
 import PasswordIcon from '../../assets/icons/password.svg'
@@ -6,6 +8,22 @@ import Button from '../../components/Button'
 import Styles from './styles'
 
 const Login = ({navigation}) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const loginUser = () => {
+    const data = {
+      email,
+      password,
+    }
+    authLogin(data)
+      .then(resp => {
+        if (resp.data.status === true) {
+          console.log('SUKSES LOGIN')
+          return navigation.navigate('IFApps')
+        }
+      })
+      .catch(err => console.log('GAGAl'))
+  }
   return (
     <SafeAreaView style={Styles.container}>
       <KeyboardAwareScrollView style={{width: '100%'}}>
@@ -17,17 +35,23 @@ const Login = ({navigation}) => {
           <Text style={Styles.title}>Login</Text>
           <View style={Styles.input}>
             <EmailIcon />
-            <TextInput style={Styles.textInput} placeholder="email" />
+            <TextInput
+              style={Styles.textInput}
+              placeholder="email"
+              value={email}
+              onChangeText={text => setEmail(text)}
+            />
           </View>
           <View style={Styles.input}>
             <PasswordIcon />
-            <TextInput style={Styles.textInput} placeholder="password" />
+            <TextInput
+              style={Styles.textInput}
+              placeholder="password"
+              value={password}
+              onChangeText={text => setPassword(text)}
+            />
           </View>
-          <Button
-            style={{marginTop: 8}}
-            text="Login"
-            onPress={() => navigation.navigate('IFApps')}
-          />
+          <Button style={{marginTop: 8}} text="Login" onPress={loginUser} />
           <Text style={Styles.keterangan}>
             Belum punya akun?{' '}
             <Text

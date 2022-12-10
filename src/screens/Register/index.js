@@ -2,11 +2,24 @@ import {Image, SafeAreaView, View, Text, TextInput} from 'react-native'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CheckBox from '@react-native-community/checkbox'
 import Button from '../../components/Button'
+import {authRegister} from '../../request'
 import Styles from './styles'
 import {useState} from 'react'
 
 const Register = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
+  const [nama, setNama] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [verPassword, setVerPassword] = useState('')
+  const registerUser = () => {
+    const dataUser = {
+      name: nama,
+      email,
+      password,
+    }
+    authRegister(dataUser).then(resp => {})
+  }
   return (
     <SafeAreaView style={Styles.container}>
       <KeyboardAwareScrollView style={{width: '100%'}}>
@@ -17,25 +30,41 @@ const Register = () => {
           />
           <Text style={Styles.title}>Register</Text>
         </View>
-
         <View style={Styles.item}>
           <Text style={Styles.itemLabel}>Nama</Text>
-          <TextInput placeholder="Budi Susanto" style={Styles.textField} />
+          <TextInput
+            placeholder="Budi Susanto"
+            value={nama}
+            onChangeText={text => setNama(text)}
+            style={Styles.textField}
+          />
         </View>
         <View style={Styles.item}>
           <Text style={Styles.itemLabel}>Email</Text>
           <TextInput
             placeholder="budisusanto@unmuhpnk.ac.id"
             style={Styles.textField}
+            value={email}
+            onChangeText={text => setEmail(text)}
           />
         </View>
         <View style={Styles.item}>
           <Text style={Styles.itemLabel}>Password</Text>
-          <TextInput placeholder="password" style={Styles.textField} />
+          <TextInput
+            placeholder="password"
+            style={Styles.textField}
+            value={password}
+            onChangeText={text => setPassword(text)}
+          />
         </View>
         <View style={Styles.item}>
           <Text style={Styles.itemLabel}>Konfirmasi Password</Text>
-          <TextInput placeholder="password" style={Styles.textField} />
+          <TextInput
+            placeholder="password"
+            style={Styles.textField}
+            value={verPassword}
+            onChangeText={text => setVerPassword(text)}
+          />
         </View>
         <View style={Styles.checkbox}>
           <CheckBox
@@ -48,7 +77,7 @@ const Register = () => {
           </Text>
         </View>
         <View style={Styles.button}>
-          <Button text="Register" />
+          <Button onPress={registerUser} text="Register" />
         </View>
       </KeyboardAwareScrollView>
     </SafeAreaView>

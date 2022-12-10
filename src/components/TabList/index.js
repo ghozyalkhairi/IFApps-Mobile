@@ -1,5 +1,12 @@
-import {useState} from 'react'
-import {View, Text, FlatList, TouchableOpacity} from 'react-native'
+import {useState, useEffect} from 'react'
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native'
+import {fetchData} from '../../request'
 import Styles from './styles'
 
 const TabList = () => {
@@ -15,6 +22,15 @@ const TabList = () => {
     },
   ]
   const [activeTab, setActiveTab] = useState(tabs[0].title)
+  const [proposal, setProposal] = useState([])
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    setLoading(true)
+    fetchData('GET', 'proposal').then(resp => {
+      setProposal(resp.data.data)
+      setLoading(false)
+    })
+  }, [])
   return (
     <View style={Styles.container}>
       <FlatList
@@ -38,6 +54,19 @@ const TabList = () => {
           </TouchableOpacity>
         )}
       />
+      {loading ? (
+        <ActivityIndicator
+          size={40}
+          color="#000080"
+          style={{marginBottom: 90, paddingTop: 40}}
+        />
+      ) : (
+        <View style={Styles.detail}>
+          <Text style={Styles.status}>{proposal[0].judul_ta}</Text>
+          <Text style={Styles.statusValue}>{proposal[0].status}</Text>
+          <Text style={Styles.date}>{proposal[0].kategori}</Text>
+        </View>
+      )}
     </View>
   )
 }
