@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'
+import {colors} from '../../theme'
 
 const Styles = StyleSheet.create({
   container: {
@@ -9,7 +10,7 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    marginTop: 55,
+    marginTop: 45,
     height: 121,
     width: 121,
   },
@@ -26,7 +27,9 @@ const Styles = StyleSheet.create({
     marginBottom: 8,
   },
   textField: {
-    backgroundColor: '#F2F2F2',
+    backgroundColor: colors.other,
+    borderWidth: 2,
+    borderColor: colors.secondary,
     paddingLeft: 16,
     borderRadius: 10,
     height: 45,

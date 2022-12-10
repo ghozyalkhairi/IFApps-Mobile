@@ -16,6 +16,9 @@ function IFApps() {
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.secondary,
+        tabBarStyle: {
+          marginHorizontal: -36,
+        },
       }}>
       <Tab.Screen
         name="Home"
