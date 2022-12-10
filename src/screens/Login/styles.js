@@ -20,6 +20,9 @@ const Styles = StyleSheet.create({
     marginVertical: 12,
     borderRadius: 10,
     backgroundColor: colors.other,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
   },
   title: {
     fontSize: 32,
@@ -33,12 +36,16 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
   },
   keterangan: {
-    marginTop: 16,
+    marginTop: 22,
     fontSize: 16,
   },
   link: {
     color: colors.primary,
     fontWeight: 'bold',
+  },
+  textInput: {
+    marginLeft: 4,
+    fontSize: 16,
   },
 })
 

@@ -1,5 +1,7 @@
 import {Image, SafeAreaView, Text, TextInput, View} from 'react-native'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
+import EmailIcon from '../../assets/icons/email.svg'
+import PasswordIcon from '../../assets/icons/password.svg'
 import Button from '../../components/Button'
 import Styles from './styles'
 
@@ -14,10 +16,12 @@ const Login = ({navigation}) => {
         <View style={Styles.form}>
           <Text style={Styles.title}>Login</Text>
           <View style={Styles.input}>
-            <TextInput placeholder="email" />
+            <EmailIcon />
+            <TextInput style={Styles.textInput} placeholder="email" />
           </View>
           <View style={Styles.input}>
-            <TextInput placeholder="password" />
+            <PasswordIcon />
+            <TextInput style={Styles.textInput} placeholder="password" />
           </View>
           <Button text="Login" onPress={() => navigation.navigate('IFApps')} />
           <Text style={Styles.keterangan}>
