@@ -6,7 +6,6 @@ const Styles = StyleSheet.create({
     marginTop: 50,
     marginBottom: 22,
     marginHorizontal: 22,
-    flex: 1,
   },
   row: {
     flexDirection: 'row',
@@ -30,6 +29,12 @@ const Styles = StyleSheet.create({
   },
   profil: {
     marginLeft: 12,
+  },
+  pengumuman: {
+    width: '100%',
+    height: 160,
+    borderRadius: 16,
+    marginTop: 24,
   },
 })
 

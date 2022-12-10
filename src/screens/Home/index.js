@@ -1,4 +1,6 @@
 import {Image, SafeAreaView, Text, View} from 'react-native'
+import ProposalIcon from '../../assets/icons/bimbingan.svg'
+import MenuList from '../../components/MenuList'
 import Styles from './styles'
 
 const Home = () => {
@@ -14,6 +16,11 @@ const Home = () => {
           <Text style={Styles.title}>Rizky Wahyu Prasetyo</Text>
         </View>
       </View>
+      <Image
+        style={Styles.pengumuman}
+        source={require('../../assets/images/banner.png')}
+      />
+      <MenuList />
     </SafeAreaView>
   )
 }
