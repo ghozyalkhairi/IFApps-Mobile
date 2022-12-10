@@ -12,6 +12,7 @@ const Styles = StyleSheet.create({
     height: 160,
     width: 160,
     margin: 40,
+    alignSelf: 'center',
   },
   input: {
     borderWidth: 2,

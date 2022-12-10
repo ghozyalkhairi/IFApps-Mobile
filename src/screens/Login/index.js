@@ -8,11 +8,11 @@ import Styles from './styles'
 const Login = ({navigation}) => {
   return (
     <SafeAreaView style={Styles.container}>
-      <Image
-        style={Styles.logo}
-        source={require('../../assets/images/logo.png')}
-      />
       <KeyboardAwareScrollView style={{width: '100%'}}>
+        <Image
+          style={Styles.logo}
+          source={require('../../assets/images/logo.png')}
+        />
         <View style={Styles.form}>
           <Text style={Styles.title}>Login</Text>
           <View style={Styles.input}>
