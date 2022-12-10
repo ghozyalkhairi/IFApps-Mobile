@@ -17,15 +17,19 @@ const Login = ({navigation}) => {
         <View style={Styles.input}>
           <TextInput placeholder="password" />
         </View>
+        <Button text="Login" />
+        <Text>
+          Belum punya akun?
+          <Text onPress={() => navigation.navigate('Register')}>Daftar</Text>
+        </Text>
         <Button text="Login" onPress={() => navigation.navigate('IFApps')} />
-        <Text style={Styles.keterangan}>
+        {/* <Text style={Styles.keterangan}>
           Belum punya akun?{' '}
           <Text
             onPress={() => navigation.navigate('Register')}
             style={Styles.link}>
             Daftar
-          </Text>
-        </Text>
+          </Text> */}
       </View>
     </SafeAreaView>
   )
