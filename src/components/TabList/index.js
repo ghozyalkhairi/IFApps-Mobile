@@ -20,14 +20,15 @@ const TabList = () => {
       <FlatList
         horizontal
         data={tabs}
-        renderItem={({item}) => (
+        renderItem={({item, index}) => (
           <TouchableOpacity
             onPress={() => setActiveTab(item.title)}
-            style={
+            style={[
               item.title === activeTab
                 ? Styles.itemContainerActive
-                : Styles.itemContainer
-            }>
+                : Styles.itemContainer,
+              index === 2 ? {marginRight: 0} : null,
+            ]}>
             <Text
               style={
                 item.title === activeTab ? Styles.textActive : Styles.text
