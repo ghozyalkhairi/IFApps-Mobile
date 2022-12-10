@@ -3,7 +3,7 @@ import {colors} from '../../theme'
 
 const Styles = StyleSheet.create({
   container: {
-    margin: 0,
+    marginHorizontal: 22,
     justifyContent: 'space-between',
   },
   itemLogo: {
@@ -14,7 +14,7 @@ const Styles = StyleSheet.create({
     height: 121,
     width: 121,
   },
-  item: {marginHorizontal: 38, marginTop: 10},
+  item: {marginTop: 10},
   itemLabel: {
     marginBottom: 9,
     fontWeight: 'bold',
@@ -36,7 +36,6 @@ const Styles = StyleSheet.create({
   },
   checkbox: {
     flexDirection: 'row',
-    marginLeft: 38,
     marginTop: 10,
   },
   textCheckBox: {
@@ -48,8 +47,7 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    marginHorizontal: 38,
-    marginTop: 20,
+    marginVertical: 20,
   },
 })
 
