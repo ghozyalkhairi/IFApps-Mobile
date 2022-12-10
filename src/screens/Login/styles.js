@@ -46,6 +46,7 @@ const Styles = StyleSheet.create({
   textInput: {
     marginLeft: 4,
     fontSize: 16,
+    width: '100%',
   },
 })
 
