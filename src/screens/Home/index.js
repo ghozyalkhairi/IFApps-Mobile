@@ -3,7 +3,8 @@ import MenuList from '../../components/MenuList'
 import TabList from '../../components/TabList'
 import Styles from './styles'
 
-const Home = () => {
+const Home = ({route}) => {
+  const user = route.params.user
   return (
     <SafeAreaView style={Styles.container}>
       <View style={Styles.row}>
@@ -13,7 +14,7 @@ const Home = () => {
         />
         <View style={Styles.profil}>
           <Text style={Styles.subtitle}>Selamat Datang</Text>
-          <Text style={Styles.title}>Rizky Wahyu Prasetyo</Text>
+          <Text style={Styles.title}>{user.name}</Text>
         </View>
       </View>
       <Image

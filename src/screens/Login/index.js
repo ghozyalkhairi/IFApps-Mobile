@@ -31,7 +31,15 @@ const Login = ({navigation}) => {
       .then(resp => {
         if (resp.data.status) {
           ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
-          return navigation.navigate('IFApps')
+          return navigation.navigate('IFApps', {
+            screen: 'Home',
+            params: {
+              screen: 'HomeScreen',
+              params: {
+                user: {name: resp.data.user.name, email: resp.data.user.email},
+              },
+            },
+          })
         }
         ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
       })
