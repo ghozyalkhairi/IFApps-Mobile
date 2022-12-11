@@ -13,7 +13,7 @@ import {authRegister} from '../../request'
 import Styles from './styles'
 import {useState} from 'react'
 
-const Register = () => {
+const Register = ({navigation}) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
