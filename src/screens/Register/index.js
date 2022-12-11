@@ -20,7 +20,7 @@ const Register = () => {
   const [password, setPassword] = useState('')
   const [verPassword, setVerPassword] = useState('')
   const checkPassword = () =>
-    password.length && verPassword.length ? password === verPassword : true
+    password.length <= verPassword.length ? password === verPassword : true
   const registerUser = () => {
     if (
       !name.length ||
@@ -77,6 +77,7 @@ const Register = () => {
           <TextInput
             placeholder="budisusanto@unmuhpnk.ac.id"
             style={Styles.textField}
+            textContentType="emailAddress"
             value={email}
             onChangeText={text => setEmail(text)}
           />

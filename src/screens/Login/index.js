@@ -62,6 +62,7 @@ const Login = ({navigation}) => {
             <EmailIcon />
             <TextInput
               style={Styles.textInput}
+              textContentType="emailAddress"
               placeholder="email"
               value={email}
               onChangeText={text => setEmail(text)}
