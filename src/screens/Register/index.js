@@ -15,12 +15,18 @@ import {useState} from 'react'
 
 const Register = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
-  const [nama, setNama] = useState('')
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [verPassword, setVerPassword] = useState('')
   const registerUser = () => {
-    if (!nama.length || !email.length || !password.length || !verPassword.le)
+    if (
+      !name.length ||
+      !email.length ||
+      !password.length ||
+      !verPassword.length ||
+      !toggleCheckBox
+    )
       return ToastAndroid.show(
         'Form input tidak boleh ada yang kosong',
         ToastAndroid.SHORT,
@@ -31,7 +37,7 @@ const Register = () => {
         ToastAndroid.SHORT,
       )
     const dataUser = {
-      name: nama,
+      name,
       email,
       password,
     }
@@ -59,8 +65,8 @@ const Register = () => {
           <Text style={Styles.itemLabel}>Nama</Text>
           <TextInput
             placeholder="Budi Susanto"
-            value={nama}
-            onChangeText={text => setNama(text)}
+            value={name}
+            onChangeText={text => setName(text)}
             style={Styles.textField}
           />
         </View>
