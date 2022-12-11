@@ -33,7 +33,7 @@ const Register = () => {
       )
     if (password !== verPassword)
       return ToastAndroid.show(
-        'Input dan konfirmasi password harus sama',
+        'Password dan konfirmasi password harus sama',
         ToastAndroid.SHORT,
       )
     const dataUser = {
