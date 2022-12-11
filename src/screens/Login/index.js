@@ -1,4 +1,11 @@
-import {Image, SafeAreaView, Text, TextInput, View} from 'react-native'
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  TextInput,
+  View,
+  ToastAndroid,
+} from 'react-native'
 import {useState} from 'react'
 import {authLogin} from '../../request'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
@@ -11,18 +18,24 @@ const Login = ({navigation}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const loginUser = () => {
+    if (!email.length || !password.length)
+      return ToastAndroid.show(
+        'Form input tidak boleh ada yang kosong',
+        ToastAndroid.SHORT,
+      )
     const data = {
       email,
       password,
     }
     authLogin(data)
       .then(resp => {
-        if (resp.data.status === true) {
-          console.log('SUKSES LOGIN')
+        if (resp.data.status) {
+          ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
           return navigation.navigate('IFApps')
         }
+        ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
       })
-      .catch(err => console.log('GAGAl'))
+      .catch(err => ToastAndroid.show(err.message, ToastAndroid.SHORT))
   }
   return (
     <SafeAreaView style={Styles.container}>

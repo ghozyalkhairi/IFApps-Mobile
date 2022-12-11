@@ -1,4 +1,11 @@
-import {Image, SafeAreaView, View, Text, TextInput} from 'react-native'
+import {
+  Image,
+  SafeAreaView,
+  View,
+  Text,
+  TextInput,
+  ToastAndroid,
+} from 'react-native'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CheckBox from '@react-native-community/checkbox'
 import Button from '../../components/Button'
@@ -13,12 +20,30 @@ const Register = () => {
   const [password, setPassword] = useState('')
   const [verPassword, setVerPassword] = useState('')
   const registerUser = () => {
+    if (!nama.length || !email.length || !password.length || !verPassword.le)
+      return ToastAndroid.show(
+        'Form input tidak boleh ada yang kosong',
+        ToastAndroid.SHORT,
+      )
+    if (password !== verPassword)
+      return ToastAndroid.show(
+        'Input dan konfirmasi password harus sama',
+        ToastAndroid.SHORT,
+      )
     const dataUser = {
       name: nama,
       email,
       password,
     }
-    authRegister(dataUser).then(resp => {})
+    authRegister(dataUser)
+      .then(resp => {
+        if (resp.data.status) {
+          ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
+          return navigation.navigate('Login')
+        }
+        ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
+      })
+      .catch(err => ToastAndroid.show(err.message, ToastAndroid.SHORT))
   }
   return (
     <SafeAreaView style={Styles.container}>
