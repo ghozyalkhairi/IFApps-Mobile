@@ -51,7 +51,7 @@ const Register = () => {
         }
         ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
       })
-      .catch(err => ToastAndroid.show(err.message, ToastAndroid.SHORT))
+      .catch(err => ToastAndroid.show('Network Error', ToastAndroid.SHORT))
   }
   return (
     <SafeAreaView style={Styles.container}>

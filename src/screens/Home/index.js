@@ -7,14 +7,13 @@ import Styles from './styles'
 
 const Home = ({route, navigation}) => {
   const user = route.params.user
-  console.log(user.token)
   const onLogout = () => {
     authLogout(user.token)
       .then(resp => {
         ToastAndroid.show('Berhasil Logout', ToastAndroid.SHORT)
         navigation.navigate('Login')
       })
-      .catch(err => ToastAndroid.show(err.message), ToastAndroid.SHORT)
+      .catch(err => ToastAndroid.show('Network Error'), ToastAndroid.SHORT)
   }
   return (
     <SafeAreaView style={Styles.container}>
