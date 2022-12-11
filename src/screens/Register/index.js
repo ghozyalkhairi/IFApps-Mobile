@@ -19,6 +19,8 @@ const Register = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [verPassword, setVerPassword] = useState('')
+  const checkPassword = () =>
+    password.length && verPassword.length ? password === verPassword : true
   const registerUser = () => {
     if (
       !name.length ||
@@ -83,7 +85,9 @@ const Register = () => {
           <Text style={Styles.itemLabel}>Password</Text>
           <TextInput
             placeholder="password"
-            style={Styles.textField}
+            secureTextEntry={true}
+            textContentType="password"
+            style={checkPassword() ? Styles.textField : Styles.textFieldRed}
             value={password}
             onChangeText={text => setPassword(text)}
           />
@@ -92,7 +96,9 @@ const Register = () => {
           <Text style={Styles.itemLabel}>Konfirmasi Password</Text>
           <TextInput
             placeholder="password"
-            style={Styles.textField}
+            secureTextEntry={true}
+            textContentType="password"
+            style={checkPassword() ? Styles.textField : Styles.textFieldRed}
             value={verPassword}
             onChangeText={text => setVerPassword(text)}
           />

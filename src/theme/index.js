@@ -14,4 +14,5 @@ export const colors = {
   accent: '#FFFFFF',
   neutral: '#5A5A5A',
   other: '#F2F2F2',
+  subtleRed: 'rgba(255,0,0,0.1)',
 }

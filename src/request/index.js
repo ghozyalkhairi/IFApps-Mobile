@@ -42,3 +42,20 @@ export const authLogin = async data => {
     return err
   }
 }
+
+export const authLogout = async token => {
+  const url = 'http://192.168.1.6:8000/api/auth/logout'
+  const options = {
+    url,
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    validateStatus: () => true,
+  }
+  try {
+    return await axios.request(options)
+  } catch (err) {
+    return err
+  }
+}

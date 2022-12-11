@@ -36,7 +36,11 @@ const Login = ({navigation}) => {
             params: {
               screen: 'HomeScreen',
               params: {
-                user: {name: resp.data.user.name, email: resp.data.user.email},
+                user: {
+                  name: resp.data.user.name,
+                  email: resp.data.user.email,
+                  token: resp.data.token,
+                },
               },
             },
           })
@@ -67,6 +71,8 @@ const Login = ({navigation}) => {
             <PasswordIcon />
             <TextInput
               style={Styles.textInput}
+              secureTextEntry={true}
+              textContentType="password"
               placeholder="password"
               value={password}
               onChangeText={text => setPassword(text)}
