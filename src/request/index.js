@@ -44,7 +44,7 @@ export const authLogin = async data => {
 }
 
 export const authLogout = async token => {
-  const url = 'http://192.168.1.6:8000/api/auth/logout'
+  const url = 'http://10.0.2.2:8000/api/auth/logout'
   const options = {
     url,
     method: 'POST',
