@@ -6,7 +6,6 @@ const Styles = StyleSheet.create({
     margin: 22,
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: '90%',
   },
   logo: {
     height: 160,
@@ -28,7 +27,6 @@ const Styles = StyleSheet.create({
   title: {
     fontSize: 32,
     color: 'black',
-    fontWeight: 'bold',
     marginTop: 30,
     marginBottom: 40,
   },
@@ -42,12 +40,13 @@ const Styles = StyleSheet.create({
   },
   link: {
     color: colors.primary,
-    fontWeight: 'bold',
   },
   textInput: {
     marginLeft: 4,
     fontSize: 16,
     width: '100%',
+    fontFamily: 'Poppins-Light',
+    marginTop: 4,
   },
 })
 

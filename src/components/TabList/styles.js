@@ -7,7 +7,7 @@ const Styles = StyleSheet.create({
     marginHorizontal: -22,
     padding: 22,
     borderRadius: 20,
-    height: '42%',
+    height: '43%',
   },
   itemContainer: {
     marginRight: 28,
@@ -23,12 +23,13 @@ const Styles = StyleSheet.create({
   },
   text: {
     color: colors.secondary,
-    fontSize: 16,
+    fontSize: 15,
+    fontFamily: 'Poppins-Regular',
   },
   textActive: {
     color: colors.primary,
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: 15,
+    fontFamily: 'Poppins-SemiBold',
   },
   detail: {
     marginBottom: 90,
@@ -40,7 +41,6 @@ const Styles = StyleSheet.create({
   statusValue: {
     fontSize: 24,
     color: colors.primary,
-    marginVertical: 6,
   },
   date: {
     fontSize: 14,

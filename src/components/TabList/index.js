@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native'
+import CustomText from '../CustomText'
 import {fetchData} from '../../request'
 import Styles from './styles'
 
@@ -62,9 +63,11 @@ const TabList = () => {
         />
       ) : (
         <View style={Styles.detail}>
-          <Text style={Styles.status}>{proposal[0].judul_ta}</Text>
-          <Text style={Styles.statusValue}>{proposal[0].status}</Text>
-          <Text style={Styles.date}>{proposal[0].kategori}</Text>
+          <CustomText style={Styles.status}>{proposal[0].judul_ta}</CustomText>
+          <CustomText style={Styles.statusValue}>
+            {proposal[0].status}
+          </CustomText>
+          <CustomText style={Styles.date}>{proposal[0].kategori}</CustomText>
         </View>
       )}
     </View>

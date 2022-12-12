@@ -1,14 +1,8 @@
-import {
-  Image,
-  SafeAreaView,
-  Text,
-  TextInput,
-  View,
-  ToastAndroid,
-} from 'react-native'
+import {Image, SafeAreaView, TextInput, View, ToastAndroid} from 'react-native'
 import {useState} from 'react'
 import {authLogin} from '../../request'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
+import CustomText from '../../components/CustomText'
 import EmailIcon from '../../assets/icons/email.svg'
 import PasswordIcon from '../../assets/icons/password.svg'
 import Button from '../../components/Button'
@@ -57,7 +51,9 @@ const Login = ({navigation}) => {
           source={require('../../assets/images/logo.png')}
         />
         <View style={Styles.form}>
-          <Text style={Styles.title}>Login</Text>
+          <CustomText weight="semi" style={Styles.title}>
+            Login
+          </CustomText>
           <View style={Styles.input}>
             <EmailIcon />
             <TextInput
@@ -80,14 +76,15 @@ const Login = ({navigation}) => {
             />
           </View>
           <Button style={{marginTop: 8}} text="Login" onPress={loginUser} />
-          <Text style={Styles.keterangan}>
+          <CustomText style={Styles.keterangan}>
             Belum punya akun?{' '}
-            <Text
+            <CustomText
+              weight="bold"
               onPress={() => navigation.navigate('Register')}
               style={Styles.link}>
               Daftar
-            </Text>{' '}
-          </Text>
+            </CustomText>
+          </CustomText>
         </View>
       </KeyboardAwareScrollView>
     </SafeAreaView>

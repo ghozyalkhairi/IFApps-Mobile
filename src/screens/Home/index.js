@@ -1,5 +1,6 @@
 import {Image, SafeAreaView, Text, ToastAndroid, View} from 'react-native'
 import {TouchableOpacity} from 'react-native-gesture-handler'
+import CustomText from '../../components/CustomText'
 import {authLogout} from '../../request'
 import MenuList from '../../components/MenuList'
 import TabList from '../../components/TabList'
@@ -10,8 +11,11 @@ const Home = ({route, navigation}) => {
   const onLogout = () => {
     authLogout(user.token)
       .then(resp => {
-        ToastAndroid.show('Berhasil Logout', ToastAndroid.SHORT)
-        navigation.navigate('Login')
+        if (resp.data.meta.status === 'success') {
+          ToastAndroid.show('Berhasil Logout', ToastAndroid.SHORT)
+          return navigation.navigate('Login')
+        }
+        ToastAndroid.show(resp.data.meta.message)
       })
       .catch(err => ToastAndroid.show('Network Error'), ToastAndroid.SHORT)
   }
@@ -25,8 +29,10 @@ const Home = ({route, navigation}) => {
           />
         </TouchableOpacity>
         <View style={Styles.profil}>
-          <Text style={Styles.subtitle}>Selamat Datang</Text>
-          <Text style={Styles.title}>{user.name}</Text>
+          <CustomText style={Styles.subtitle}>Selamat Datang</CustomText>
+          <CustomText weight="semi" style={Styles.title}>
+            {user.name}
+          </CustomText>
         </View>
       </View>
       <Image

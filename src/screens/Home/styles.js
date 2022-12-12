@@ -20,12 +20,10 @@ const Styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: '500',
     color: 'black',
   },
   subtitle: {
     fontSize: 18,
-    fontWeight: '300',
     color: colors.neutral,
   },
   profil: {

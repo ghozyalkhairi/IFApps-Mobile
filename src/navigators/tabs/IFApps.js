@@ -19,6 +19,9 @@ function IFApps() {
         tabBarStyle: {
           marginHorizontal: -36,
         },
+        tabBarLabelStyle: {
+          fontFamily: 'Poppins-Regular',
+        },
       }}>
       <Tab.Screen
         name="Home"

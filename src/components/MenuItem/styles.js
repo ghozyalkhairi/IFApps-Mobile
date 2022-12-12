@@ -4,8 +4,8 @@ import {colors} from '../../theme'
 const Styles = StyleSheet.create({
   containerIcon: {
     backgroundColor: colors.primary,
-    width: 56,
-    height: 56,
+    width: 54,
+    height: 54,
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
@@ -21,6 +21,7 @@ const Styles = StyleSheet.create({
     width: 1,
     color: 'black',
     marginTop: 4,
+    fontSize: 12,
   },
 })
 

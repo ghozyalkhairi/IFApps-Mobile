@@ -10,7 +10,6 @@ const Styles = StyleSheet.create({
   title: {
     color: '#F2F2F2',
     fontSize: 40,
-    fontWeight: 'bold',
     textAlign: 'center',
   },
   container: {
@@ -19,7 +18,6 @@ const Styles = StyleSheet.create({
   subtitle: {
     color: '#F2F2F2',
     fontSize: 22,
-    fontWeight: 'light',
     textAlign: 'center',
     marginVertical: 50,
   },

@@ -1,11 +1,5 @@
-import {
-  Image,
-  SafeAreaView,
-  View,
-  Text,
-  TextInput,
-  ToastAndroid,
-} from 'react-native'
+import {Image, SafeAreaView, View, TextInput, ToastAndroid} from 'react-native'
+import CustomText from '../../components/CustomText'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CheckBox from '@react-native-community/checkbox'
 import Button from '../../components/Button'
@@ -61,10 +55,14 @@ const Register = ({navigation}) => {
             style={Styles.logo}
             source={require('../../assets/images/logo.png')}
           />
-          <Text style={Styles.title}>Register</Text>
+          <CustomText weight="semi" style={Styles.title}>
+            Register
+          </CustomText>
         </View>
         <View style={Styles.item}>
-          <Text style={Styles.itemLabel}>Nama</Text>
+          <CustomText weight="semi" style={Styles.itemLabel}>
+            Nama
+          </CustomText>
           <TextInput
             placeholder="Budi Susanto"
             value={name}
@@ -73,7 +71,9 @@ const Register = ({navigation}) => {
           />
         </View>
         <View style={Styles.item}>
-          <Text style={Styles.itemLabel}>Email</Text>
+          <CustomText weight="semi" style={Styles.itemLabel}>
+            Email
+          </CustomText>
           <TextInput
             placeholder="budisusanto@unmuhpnk.ac.id"
             style={Styles.textField}
@@ -83,7 +83,9 @@ const Register = ({navigation}) => {
           />
         </View>
         <View style={Styles.item}>
-          <Text style={Styles.itemLabel}>Password</Text>
+          <CustomText weight="semi" style={Styles.itemLabel}>
+            Password
+          </CustomText>
           <TextInput
             placeholder="password"
             secureTextEntry={true}
@@ -94,7 +96,9 @@ const Register = ({navigation}) => {
           />
         </View>
         <View style={Styles.item}>
-          <Text style={Styles.itemLabel}>Konfirmasi Password</Text>
+          <CustomText weight="semi" style={Styles.itemLabel}>
+            Konfirmasi Password
+          </CustomText>
           <TextInput
             placeholder="password"
             secureTextEntry={true}
@@ -110,9 +114,9 @@ const Register = ({navigation}) => {
             value={toggleCheckBox}
             onValueChange={newValue => setToggleCheckBox(newValue)}
           />
-          <Text style={Styles.textCheckBox}>
+          <CustomText style={Styles.textCheckBox}>
             Saya setuju dengan kebijakan dan syarat
-          </Text>
+          </CustomText>
         </View>
         <View style={Styles.button}>
           <Button onPress={registerUser} text="Register" />
