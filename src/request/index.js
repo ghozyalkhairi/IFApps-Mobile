@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const fetchData = async (method, type) => {
-  const baseURL = 'http://192.168.1.6:8000/api'
+  const baseURL = 'http://10.0.2.2:8000/api'
   const options = {
     url: `${baseURL}/${type}`,
     method,
@@ -10,7 +10,7 @@ export const fetchData = async (method, type) => {
 }
 
 export const authRegister = async data => {
-  const url = 'http://192.168.1.6:8000/api/auth/register'
+  const url = 'http://10.0.2.2:8000/api/auth/register'
   const options = {
     url,
     method: 'POST',
@@ -20,7 +20,7 @@ export const authRegister = async data => {
 }
 
 export const authLogin = async data => {
-  const url = 'http://192.168.1.6:8000/api/auth/login'
+  const url = 'http://10.0.2.2:8000/api/auth/login'
   const options = {
     url,
     method: 'POST',
