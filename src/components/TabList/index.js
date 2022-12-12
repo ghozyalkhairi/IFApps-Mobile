@@ -59,7 +59,7 @@ const TabList = () => {
         <ActivityIndicator
           size={40}
           color="#000080"
-          style={{marginBottom: 97, paddingTop: 40}}
+          style={{marginVertical: 65}}
         />
       ) : (
         <View style={Styles.detail}>
