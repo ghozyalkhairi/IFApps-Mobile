@@ -1,4 +1,11 @@
-import {Image, SafeAreaView, Text, TextInput, View} from 'react-native'
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  TextInput,
+  View,
+  ToastAndroid,
+} from 'react-native'
 import {useState} from 'react'
 import {authLogin} from '../../request'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
@@ -11,18 +18,36 @@ const Login = ({navigation}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const loginUser = () => {
+    if (!email.length || !password.length)
+      return ToastAndroid.show(
+        'Form input tidak boleh ada yang kosong',
+        ToastAndroid.SHORT,
+      )
     const data = {
       email,
       password,
     }
     authLogin(data)
       .then(resp => {
-        if (resp.data.status === true) {
-          console.log('SUKSES LOGIN')
-          return navigation.navigate('IFApps')
+        if (resp.data.status) {
+          ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
+          return navigation.navigate('IFApps', {
+            screen: 'Home',
+            params: {
+              screen: 'HomeScreen',
+              params: {
+                user: {
+                  name: resp.data.user.name,
+                  email: resp.data.user.email,
+                  token: resp.data.token,
+                },
+              },
+            },
+          })
         }
+        ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
       })
-      .catch(err => console.log('GAGAl'))
+      .catch(err => ToastAndroid.show('Network Error', ToastAndroid.SHORT))
   }
   return (
     <SafeAreaView style={Styles.container}>
@@ -37,6 +62,7 @@ const Login = ({navigation}) => {
             <EmailIcon />
             <TextInput
               style={Styles.textInput}
+              textContentType="emailAddress"
               placeholder="email"
               value={email}
               onChangeText={text => setEmail(text)}
@@ -46,6 +72,8 @@ const Login = ({navigation}) => {
             <PasswordIcon />
             <TextInput
               style={Styles.textInput}
+              secureTextEntry={true}
+              textContentType="password"
               placeholder="password"
               value={password}
               onChangeText={text => setPassword(text)}

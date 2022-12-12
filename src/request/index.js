@@ -6,7 +6,11 @@ export const fetchData = async (method, type) => {
     url: `${baseURL}/${type}`,
     method,
   }
-  return await axios.request(options)
+  try {
+    return await axios.request(options)
+  } catch (err) {
+    return err
+  }
 }
 
 export const authRegister = async data => {
@@ -15,8 +19,13 @@ export const authRegister = async data => {
     url,
     method: 'POST',
     data,
+    validateStatus: () => true,
   }
-  return await axios.request(options)
+  try {
+    return await axios.request(options)
+  } catch (err) {
+    return err
+  }
 }
 
 export const authLogin = async data => {
@@ -25,6 +34,24 @@ export const authLogin = async data => {
     url,
     method: 'POST',
     data,
+    validateStatus: () => true,
+  }
+  try {
+    return await axios.request(options)
+  } catch (err) {
+    return err
+  }
+}
+
+export const authLogout = async token => {
+  const url = 'http://192.168.1.6:8000/api/auth/logout'
+  const options = {
+    url,
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    validateStatus: () => true,
   }
   try {
     return await axios.request(options)

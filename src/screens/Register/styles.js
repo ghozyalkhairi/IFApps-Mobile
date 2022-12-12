@@ -34,6 +34,14 @@ const Styles = StyleSheet.create({
     borderRadius: 10,
     height: 45,
   },
+  textFieldRed: {
+    backgroundColor: colors.subtleRed,
+    borderWidth: 2,
+    borderColor: 'red',
+    paddingLeft: 16,
+    borderRadius: 10,
+    height: 45,
+  },
   checkbox: {
     flexDirection: 'row',
     marginTop: 10,
