@@ -7,7 +7,7 @@ const Styles = StyleSheet.create({
     marginHorizontal: -22,
     padding: 22,
     borderRadius: 20,
-    height: '43%',
+    height: '42%',
   },
   itemContainer: {
     marginRight: 28,
