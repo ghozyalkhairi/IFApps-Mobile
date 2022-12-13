@@ -32,22 +32,6 @@ const Styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
     paddingBottom: 4,
   },
-  detail: {
-    marginTop: 20,
-    marginBottom: 60,
-  },
-  status: {
-    fontSize: 14,
-    color: colors.secondary,
-  },
-  statusValue: {
-    fontSize: 24,
-    color: colors.primary,
-  },
-  date: {
-    fontSize: 14,
-    color: colors.secondary,
-  },
 })
 
 export default Styles
