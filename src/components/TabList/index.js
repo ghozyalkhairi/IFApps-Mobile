@@ -9,6 +9,7 @@ import {
 import CustomText from '../CustomText'
 import {fetchData} from '../../request'
 import Styles from './styles'
+import TabMenuContent from '../TabMenuContent'
 
 const TabList = () => {
   const tabs = [
@@ -62,13 +63,7 @@ const TabList = () => {
           style={{marginVertical: 65}}
         />
       ) : (
-        <View style={Styles.detail}>
-          <CustomText style={Styles.status}>{proposal[0].judul_ta}</CustomText>
-          <CustomText style={Styles.statusValue}>
-            {proposal[0].status}
-          </CustomText>
-          <CustomText style={Styles.date}>{proposal[0].kategori}</CustomText>
-        </View>
+        <TabMenuContent type={activeTab} data={proposal[0]} />
       )}
     </View>
   )
