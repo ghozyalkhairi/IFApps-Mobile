@@ -1,4 +1,11 @@
-import {Image, SafeAreaView, TextInput, View, ToastAndroid} from 'react-native'
+import {
+  Image,
+  SafeAreaView,
+  TextInput,
+  View,
+  ToastAndroid,
+  StatusBar,
+} from 'react-native'
 import {useState} from 'react'
 import {authLogin} from '../../request'
 import {useUserActions} from '../../stores/userStore'
@@ -45,6 +52,12 @@ const Login = ({navigation}) => {
   }
   return (
     <SafeAreaView style={Styles.container}>
+      <StatusBar
+        backgroundColor="white"
+        barStyle="dark-content"
+        animated={true}
+        translucent={true}
+      />
       <KeyboardAwareScrollView style={{width: '100%'}}>
         <Image
           style={Styles.logo}

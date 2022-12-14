@@ -1,4 +1,4 @@
-import {ImageBackground, View} from 'react-native'
+import {ImageBackground, View, StatusBar} from 'react-native'
 import CustomText from '../../components/CustomText'
 import Button from '../../components/Button'
 import Styles from './styles'
@@ -8,6 +8,12 @@ const Landing = ({navigation}) => {
     <ImageBackground
       style={Styles.background}
       source={require('../../assets/images/landing.png')}>
+      <StatusBar
+        backgroundColor="rgba(256,256,256,0)"
+        barStyle="dark-content"
+        animated={true}
+        translucent={true}
+      />
       <View style={Styles.container}>
         <CustomText weight="bold" style={Styles.title}>
           IFApps
