@@ -1,9 +1,13 @@
 import {SafeAreaView, Text} from 'react-native'
+import CustomText from '../../components/CustomText'
+import Styles from './styles'
 
 const News = () => {
   return (
-    <SafeAreaView>
-      <Text>News</Text>
+    <SafeAreaView style={Styles.container}>
+      <CustomText weight="semi" style={Styles.text}>
+        News
+      </CustomText>
     </SafeAreaView>
   )
 }
