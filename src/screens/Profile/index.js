@@ -3,7 +3,6 @@ import Styles from './styles'
 import EditIcon from '../../assets/icons/vector.svg'
 import PencilIcon from '../../assets/icons/pencil.svg'
 import LogoutIcon from '../../assets/icons/logout.svg'
-import Button from '../../components/Button'
 import {TouchableOpacity} from 'react-native-gesture-handler'
 import {useNavigation} from '@react-navigation/native'
 
