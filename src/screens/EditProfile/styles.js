@@ -3,7 +3,7 @@ import {colors} from '../../theme'
 
 const Styles = StyleSheet.create({
   container: {
-    marginTop: 40,
+    marginTop: 64,
     marginHorizontal: 22,
     textAlign: 'left',
   },
