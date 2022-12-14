@@ -18,7 +18,9 @@ const Profile = () => {
             source={require('../../assets/images/foto.png')}
           />
           <View style={Styles.editIcon}>
-            <EditIcon style={Styles.edit} />
+            <TouchableOpacity style={Styles.edit}>
+              <EditIcon />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
