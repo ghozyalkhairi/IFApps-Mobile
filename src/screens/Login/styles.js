@@ -3,14 +3,14 @@ import {colors} from '../../theme'
 
 const Styles = StyleSheet.create({
   container: {
-    margin: 22,
+    marginHorizontal: 22,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   logo: {
     height: 160,
     width: 160,
-    margin: 40,
+    marginTop: 74,
     alignSelf: 'center',
   },
   input: {

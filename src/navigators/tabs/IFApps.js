@@ -37,7 +37,7 @@ function IFApps() {
         }}
       />
       <Tab.Screen
-        name="News"
+        name="Pengumuman"
         component={NewsStack}
         options={{
           tabBarIcon: ({focused}) => (

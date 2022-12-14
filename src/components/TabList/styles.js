@@ -8,7 +8,7 @@ const Styles = StyleSheet.create({
     padding: 22,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    marginBottom: 30,
+    marginBottom: 40,
   },
   itemContainer: {
     marginRight: 28,
@@ -31,22 +31,6 @@ const Styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: 'Poppins-SemiBold',
     paddingBottom: 4,
-  },
-  detail: {
-    marginTop: 20,
-    marginBottom: 60,
-  },
-  status: {
-    fontSize: 14,
-    color: colors.secondary,
-  },
-  statusValue: {
-    fontSize: 24,
-    color: colors.primary,
-  },
-  date: {
-    fontSize: 14,
-    color: colors.secondary,
   },
 })
 
