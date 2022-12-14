@@ -31,7 +31,7 @@ const Styles = StyleSheet.create({
   textInput: {
     fontSize: 18,
     marginTop: 4,
-    marginLeft: 14,
+    marginLeft: 8,
     paddingVertical: 12,
     fontFamily: 'Poppins-Regular',
     width: '100%',

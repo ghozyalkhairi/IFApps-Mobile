@@ -1,6 +1,7 @@
 import {Image, SafeAreaView, TextInput, View, ToastAndroid} from 'react-native'
 import {useState} from 'react'
 import {authLogin} from '../../request'
+import {useUserActions} from '../../stores/userStore'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CustomText from '../../components/CustomText'
 import EmailIcon from '../../assets/icons/email.svg'
@@ -11,6 +12,7 @@ import Styles from './styles'
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const {onUserLogIn} = useUserActions()
   const loginUser = () => {
     if (!email.length || !password.length)
       return ToastAndroid.show(
@@ -25,17 +27,15 @@ const Login = ({navigation}) => {
       .then(resp => {
         if (resp.data.status) {
           ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
+          onUserLogIn({
+            name: resp.data.user.name,
+            email: resp.data.user.email,
+            token: resp.data.token,
+          })
           return navigation.navigate('IFApps', {
             screen: 'Home',
             params: {
               screen: 'HomeScreen',
-              params: {
-                user: {
-                  name: resp.data.user.name,
-                  email: resp.data.user.email,
-                  token: resp.data.token,
-                },
-              },
             },
           })
         }

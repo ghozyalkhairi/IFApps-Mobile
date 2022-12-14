@@ -1,10 +1,5 @@
-import {
-  SafeAreaView,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native'
+import {SafeAreaView, View, TextInput, TouchableOpacity} from 'react-native'
+import {useUser} from '../../stores/userStore'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CustomText from '../../components/CustomText'
 import LeftArrow from '../../assets/icons/leftarrow.svg'
@@ -15,6 +10,7 @@ import PasswordIcon from '../../assets/icons/password.svg'
 import Button from '../../components/Button'
 
 const EditProfile = ({navigation}) => {
+  const user = useUser()
   return (
     <SafeAreaView style={Styles.container}>
       <KeyboardAwareScrollView>
@@ -34,7 +30,7 @@ const EditProfile = ({navigation}) => {
             <TextInput
               style={Styles.textInput}
               textContentType="nama"
-              placeholder="nama"
+              placeholder={user.name}
             />
           </View>
           <View style={Styles.input}>
@@ -42,7 +38,7 @@ const EditProfile = ({navigation}) => {
             <TextInput
               style={Styles.textInput}
               textContentType="emailAddress"
-              placeholder="email"
+              placeholder={user.email}
             />
           </View>
           <View style={Styles.input}>

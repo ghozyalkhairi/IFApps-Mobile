@@ -1,4 +1,12 @@
-import {SafeAreaView, View, Image, TouchableOpacity} from 'react-native'
+import {
+  SafeAreaView,
+  View,
+  Image,
+  TouchableOpacity,
+  ToastAndroid,
+} from 'react-native'
+import {useUser, useUserActions} from '../../stores/userStore'
+import {authLogout} from '../../request'
 import CustomText from '../../components/CustomText'
 import Styles from './styles'
 import EditIcon from '../../assets/icons/vector.svg'
@@ -6,6 +14,20 @@ import PencilIcon from '../../assets/icons/pencil.svg'
 import LogoutIcon from '../../assets/icons/logout.svg'
 
 const Profile = ({navigation}) => {
+  const user = useUser()
+  const {onUserLogout} = useUserActions()
+  const onLogout = () => {
+    authLogout(user.token)
+      .then(resp => {
+        if (resp.data.meta.status === 'success') {
+          ToastAndroid.show('Berhasil Logout', ToastAndroid.SHORT)
+          onUserLogout()
+          return navigation.navigate('Login')
+        }
+        ToastAndroid.show(resp.data.meta.message)
+      })
+      .catch(err => ToastAndroid.show('Network Error'), ToastAndroid.SHORT)
+  }
   return (
     <SafeAreaView style={Styles.container}>
       <View>
@@ -25,10 +47,8 @@ const Profile = ({navigation}) => {
         </View>
       </View>
       <View style={Styles.desc}>
-        <CustomText style={Styles.name}>Rizky Wahyu Prasetiyo</CustomText>
-        <CustomText style={Styles.email}>
-          rizky.prasetiyo@unmuhpnk.ac.id
-        </CustomText>
+        <CustomText style={Styles.name}>{user.name}</CustomText>
+        <CustomText style={Styles.email}>{user.email}</CustomText>
       </View>
       <View style={Styles.menuEdit}>
         <TouchableOpacity
@@ -39,7 +59,7 @@ const Profile = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <View style={Styles.menuLogout}>
-        <TouchableOpacity style={Styles.logoutButton}>
+        <TouchableOpacity onPress={onLogout} style={Styles.logoutButton}>
           <LogoutIcon />
           <CustomText style={Styles.logoutText}>Logout</CustomText>
         </TouchableOpacity>
