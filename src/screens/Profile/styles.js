@@ -9,7 +9,6 @@ const Styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: 'medium',
     color: colors.primary,
     marginBottom: 40,
   },

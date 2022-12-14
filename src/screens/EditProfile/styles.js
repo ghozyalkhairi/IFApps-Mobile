@@ -10,8 +10,6 @@ const Styles = StyleSheet.create({
   title: {
     fontSize: 24,
     color: colors.primary,
-    fontFamily: 'Poppins',
-    fontWeight: 'medium',
     marginLeft: 13,
   },
   menuEdit: {
@@ -22,17 +20,21 @@ const Styles = StyleSheet.create({
   },
   input: {
     flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: '#F2F2F2',
     marginBottom: 24,
     borderRadius: 10,
-    paddingTop: 20,
     paddingLeft: 15,
+    borderWidth: 2,
+    borderColor: colors.secondary,
   },
   textInput: {
     fontSize: 18,
+    marginTop: 4,
     marginLeft: 14,
-    marginTop: -20,
-    paddingVertical: 15,
+    paddingVertical: 12,
+    fontFamily: 'Poppins-Regular',
+    width: '100%',
   },
 })
 

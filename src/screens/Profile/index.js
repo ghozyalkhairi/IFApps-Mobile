@@ -1,45 +1,47 @@
-import {SafeAreaView, Text, View, Image, Touchable} from 'react-native'
+import {SafeAreaView, View, Image, TouchableOpacity} from 'react-native'
+import CustomText from '../../components/CustomText'
 import Styles from './styles'
 import EditIcon from '../../assets/icons/vector.svg'
 import PencilIcon from '../../assets/icons/pencil.svg'
 import LogoutIcon from '../../assets/icons/logout.svg'
-import {TouchableOpacity} from 'react-native-gesture-handler'
-import {useNavigation} from '@react-navigation/native'
 
-const Profile = () => {
-  const navigation = useNavigation()
+const Profile = ({navigation}) => {
   return (
     <SafeAreaView style={Styles.container}>
       <View>
-        <Text style={Styles.title}>Profile</Text>
+        <CustomText weight="semi" style={Styles.title}>
+          Profile
+        </CustomText>
         <View style={Styles.image}>
           <Image
             style={Styles.thumbnail}
             source={require('../../assets/images/foto.png')}
           />
-          <View style={Styles.editIcon}>
-            <TouchableOpacity style={Styles.edit}>
+          <TouchableOpacity style={Styles.editIcon}>
+            <View style={Styles.edit}>
               <EditIcon />
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
       <View style={Styles.desc}>
-        <Text style={Styles.name}>Rizky Wahyu Prasetiyo</Text>
-        <Text style={Styles.email}>rizky.prasetiyo@unmuhpnk.ac.id</Text>
+        <CustomText style={Styles.name}>Rizky Wahyu Prasetiyo</CustomText>
+        <CustomText style={Styles.email}>
+          rizky.prasetiyo@unmuhpnk.ac.id
+        </CustomText>
       </View>
       <View style={Styles.menuEdit}>
         <TouchableOpacity
           onPress={() => navigation.navigate('EditProfileScreen')}
           style={Styles.editButton}>
           <PencilIcon />
-          <Text style={Styles.editText}>Edit Profile</Text>
+          <CustomText style={Styles.editText}>Edit Profile</CustomText>
         </TouchableOpacity>
       </View>
       <View style={Styles.menuLogout}>
         <TouchableOpacity style={Styles.logoutButton}>
           <LogoutIcon />
-          <Text style={Styles.logoutText}>Logout</Text>
+          <CustomText style={Styles.logoutText}>Logout</CustomText>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
