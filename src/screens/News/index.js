@@ -1,11 +1,4 @@
-import {
-  SafeAreaView,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  Pressable,
-} from 'react-native'
+import {SafeAreaView, ScrollView} from 'react-native'
 import CustomText from '../../components/CustomText'
 import PengumumanItem from '../../components/PengumumanItem'
 import Styles from './styles'
