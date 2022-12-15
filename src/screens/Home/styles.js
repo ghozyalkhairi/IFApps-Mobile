@@ -1,13 +1,11 @@
-import {StyleSheet} from 'react-native'
+import {Dimensions, StyleSheet} from 'react-native'
 import {colors} from '../../theme'
+
+const {height} = Dimensions.get('window')
 
 const Styles = StyleSheet.create({
   container: {
-<<<<<<< HEAD
-    marginTop: 64,
-=======
-    marginTop: 60,
->>>>>>> 54a83742a73d18d6d2999e7dd60babe815728dcf
+    marginTop: height * 0.07,
     marginBottom: 22,
     marginHorizontal: 22,
     height: '100%',

@@ -1,5 +1,7 @@
-import {StyleSheet} from 'react-native'
+import {Dimensions, StyleSheet} from 'react-native'
 import {colors} from '../../theme'
+
+const {height} = Dimensions.get('window')
 
 const Styles = StyleSheet.create({
   container: {
@@ -10,7 +12,7 @@ const Styles = StyleSheet.create({
   logo: {
     height: 160,
     width: 160,
-    marginTop: 74,
+    marginTop: height * 0.13,
     alignSelf: 'center',
   },
   input: {

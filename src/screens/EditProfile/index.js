@@ -20,13 +20,22 @@ import Button from '../../components/Button'
 const EditProfile = ({navigation}) => {
   const user = useUser()
   const {onUserUpdate} = useUserActions()
-  const [name, setName] = useState()
-  const [email, setEmail] = useState()
-  // const [password, setPassword] = useState()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const onEditProfile = () => {
+    if (!name.length || !email.length || !password.length)
+      return ToastAndroid.show('Input tidak boleh kosong', ToastAndroid.SHORT)
+    if (password.length < 8)
+      return ToastAndroid.show(
+        'Password kurang dari 8 karakter',
+        ToastAndroid.SHORT,
+      )
     const newData = {
       name,
       email,
+      password,
+      password_confirmation: password,
     }
     updateUser(user.id, newData, user.token)
       .then(resp => {
@@ -36,7 +45,7 @@ const EditProfile = ({navigation}) => {
               if (resp.data.meta.status === 'success') {
                 onUserUpdate(resp.data.data)
                 ToastAndroid.show('Berhasil Update Profil', ToastAndroid.SHORT)
-                navigation.goBack()
+                return navigation.goBack()
               }
             })
             .catch(err => ToastAndroid.show(err.message, ToastAndroid.SHORT))
@@ -77,7 +86,7 @@ const EditProfile = ({navigation}) => {
               onChangeText={text => setEmail(text)}
             />
           </View>
-          {/* <View style={Styles.input}>
+          <View style={Styles.input}>
             <PasswordIcon />
             <TextInput
               style={Styles.textInput}
@@ -87,7 +96,7 @@ const EditProfile = ({navigation}) => {
               value={password}
               onChangeText={text => setPassword(text)}
             />
-          </View> */}
+          </View>
           <Button
             onPress={onEditProfile}
             style={{marginTop: 8}}
