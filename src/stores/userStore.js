@@ -4,6 +4,7 @@ const useUserStore = create((set, get) => ({
   user: {
     name: '',
     email: '',
+    id: '',
     token: '',
     isLoggedIn: false,
   },
@@ -13,6 +14,7 @@ const useUserStore = create((set, get) => ({
         user: {
           name: userData.name,
           email: userData.email,
+          id: userData.id,
           token: userData.token,
           isLoggedIn: true,
         },
@@ -23,8 +25,19 @@ const useUserStore = create((set, get) => ({
         user: {
           name: '',
           email: '',
+          id: '',
           token: '',
           isLoggedIn: false,
+        },
+      })
+    },
+    onUserUpdate: data => {
+      const user = get().user
+      set({
+        user: {
+          ...user,
+          name: data.name,
+          email: data.email,
         },
       })
     },

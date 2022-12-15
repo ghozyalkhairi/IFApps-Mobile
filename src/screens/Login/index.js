@@ -37,6 +37,7 @@ const Login = ({navigation}) => {
           onUserLogIn({
             name: resp.data.user.name,
             email: resp.data.user.email,
+            id: resp.data.user.id,
             token: resp.data.token,
           })
           return navigation.navigate('IFApps', {
