@@ -7,12 +7,18 @@ const Styles = StyleSheet.create({
     marginHorizontal: 22,
     textAlign: 'left',
   },
+  containerNews: {
+    marginHorizontal: 22,
+    textAlign: 'left',
+    paddingBottom: 16,
+  },
   text: {
     color: colors.primary,
     fontSize: 24,
   },
   foto: {
-    marginTop: 24,
+    width: '100%',
+    borderRadius: 8,
   },
   category: {
     backgroundColor: colors.primary,
@@ -26,18 +32,31 @@ const Styles = StyleSheet.create({
     fontWeight: 'light',
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: '#F2F2F2',
     borderRadius: 8,
-    paddingVertical: 45,
-    paddingHorizontal: 25,
+    paddingVertical: 16,
+    paddingHorizontal: 16,
     width: '100%',
-    marginVertical: 10,
+    marginTop: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+    elevation: 8,
   },
   shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+
+    elevation: 8,
   },
   heading: {
     marginTop: 15,
