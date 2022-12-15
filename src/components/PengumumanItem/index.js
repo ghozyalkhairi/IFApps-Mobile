@@ -1,10 +1,13 @@
-import {View, Image, TouchableOpacity} from 'react-native'
+import {View, Image, Pressable} from 'react-native'
+import {useNavigation} from '@react-navigation/native'
 import CustomText from '../CustomText'
 import Styles from './styles'
 
-const PengumumanItem = ({kategori, judul, tanggal}) => {
+const PengumumanItem = ({pengumuman}) => {
+  const navigation = useNavigation()
   return (
-    <TouchableOpacity>
+    <Pressable
+      onPress={() => navigation.navigate('NewsDetailScreen', {pengumuman})}>
       <View style={Styles.card}>
         <View>
           <Image
@@ -12,17 +15,17 @@ const PengumumanItem = ({kategori, judul, tanggal}) => {
             source={require('../../assets/images/image_pengumuman.png')}
           />
           <CustomText weight="light" style={Styles.category}>
-            {kategori}
+            {pengumuman.kategori}
           </CustomText>
           <View style={Styles.heading}>
             <CustomText weight="semi" style={Styles.title}>
-              {judul}
+              {pengumuman.judul}
             </CustomText>
-            <CustomText style={Styles.tanggal}>{tanggal}</CustomText>
+            <CustomText style={Styles.tanggal}>{pengumuman.tanggal}</CustomText>
           </View>
         </View>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   )
 }
 
