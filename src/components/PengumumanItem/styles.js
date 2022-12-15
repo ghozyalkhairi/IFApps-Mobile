@@ -24,7 +24,7 @@ const Styles = StyleSheet.create({
   },
   category: {
     backgroundColor: colors.primary,
-    width: 66,
+    width: '25%',
     fontSize: 11,
     marginTop: 16,
     borderRadius: 13,
