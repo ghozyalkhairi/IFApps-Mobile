@@ -9,11 +9,6 @@ const Styles = StyleSheet.create({
     marginHorizontal: 22,
     textAlign: 'left',
   },
-  containerNews: {
-    marginHorizontal: 22,
-    textAlign: 'left',
-    paddingBottom: 16,
-  },
   text: {
     color: colors.primary,
     fontSize: 24,

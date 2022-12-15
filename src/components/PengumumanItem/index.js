@@ -1,10 +1,10 @@
-import {View, Image, Pressable} from 'react-native'
+import {View, Image, TouchableOpacity} from 'react-native'
 import CustomText from '../CustomText'
 import Styles from './styles'
 
-const PengumumanItem = () => {
+const PengumumanItem = ({kategori, judul, tanggal}) => {
   return (
-    <Pressable>
+    <TouchableOpacity>
       <View style={Styles.card}>
         <View>
           <Image
@@ -12,17 +12,17 @@ const PengumumanItem = () => {
             source={require('../../assets/images/image_pengumuman.png')}
           />
           <CustomText weight="light" style={Styles.category}>
-            umum
+            {kategori}
           </CustomText>
           <View style={Styles.heading}>
             <CustomText weight="semi" style={Styles.title}>
-              PKM Dosen Prodi TI di SD Negeri 68 Pontianak Barat
+              {judul}
             </CustomText>
-            <CustomText style={Styles.tanggal}>13 September 2022</CustomText>
+            <CustomText style={Styles.tanggal}>{tanggal}</CustomText>
           </View>
         </View>
       </View>
-    </Pressable>
+    </TouchableOpacity>
   )
 }
 

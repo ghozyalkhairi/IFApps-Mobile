@@ -1,6 +1,6 @@
 import {SafeAreaView, ScrollView} from 'react-native'
 import CustomText from '../../components/CustomText'
-import PengumumanItem from '../../components/PengumumanItem'
+import PengumumanList from '../../components/PengumumanList'
 import Styles from './styles'
 
 const News = () => {
@@ -11,14 +11,7 @@ const News = () => {
           Pengumuman
         </CustomText>
       </SafeAreaView>
-      <ScrollView>
-        <SafeAreaView style={Styles.containerNews}>
-          <PengumumanItem />
-          <PengumumanItem />
-          <PengumumanItem />
-          <PengumumanItem />
-        </SafeAreaView>
-      </ScrollView>
+      <PengumumanList />
     </>
   )
 }
