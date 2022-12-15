@@ -1,4 +1,5 @@
 import {Text, View, Image, Pressable} from 'react-native'
+import CustomText from '../CustomText'
 import Styles from './styles'
 
 const PengumumanItem = () => {
@@ -10,12 +11,14 @@ const PengumumanItem = () => {
             style={Styles.foto}
             source={require('../../assets/images/image_pengumuman.png')}
           />
-          <Text style={Styles.category}>umum</Text>
+          <CustomText weight="light" style={Styles.category}>
+            umum
+          </CustomText>
           <View style={Styles.heading}>
-            <Text style={Styles.title}>
+            <CustomText weight="semi" style={Styles.title}>
               PKM Dosen Prodi TI di SD Negeri 68 Pontianak Barat
-            </Text>
-            <Text style={Styles.tanggal}>13 September 2022</Text>
+            </CustomText>
+            <CustomText style={Styles.tanggal}>13 September 2022</CustomText>
           </View>
         </View>
       </View>

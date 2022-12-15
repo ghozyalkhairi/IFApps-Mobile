@@ -24,14 +24,13 @@ const Styles = StyleSheet.create({
   },
   category: {
     backgroundColor: colors.primary,
-    width: 65,
-    fontSize: 12,
+    width: 66,
+    fontSize: 11,
     marginTop: 16,
     borderRadius: 13,
     color: '#fff',
     paddingHorizontal: 15,
     paddingVertical: 6,
-    fontWeight: 'light',
   },
   heading: {
     marginTop: 15,
@@ -39,7 +38,6 @@ const Styles = StyleSheet.create({
   },
   title: {
     textAlign: 'left',
-    fontWeight: 'bold',
     fontSize: 18,
   },
   tanggal: {
