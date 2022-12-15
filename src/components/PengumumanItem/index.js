@@ -1,4 +1,4 @@
-import {Text, View, Image, Pressable} from 'react-native'
+import {View, Image, Pressable} from 'react-native'
 import CustomText from '../CustomText'
 import Styles from './styles'
 
