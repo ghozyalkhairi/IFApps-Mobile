@@ -5,7 +5,7 @@ const {height} = Dimensions.get('window')
 
 const Styles = StyleSheet.create({
   container: {
-    marginTop: height * 0.09,
+    marginTop: height * 0.06,
     marginHorizontal: 22,
     textAlign: 'left',
   },

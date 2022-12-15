@@ -52,56 +52,58 @@ const Login = ({navigation}) => {
       .catch(err => ToastAndroid.show('Network Error', ToastAndroid.SHORT))
   }
   return (
-    <SafeAreaView style={Styles.container}>
+    <>
       <StatusBar
         backgroundColor="white"
         barStyle="dark-content"
         animated={true}
         translucent={true}
       />
-      <KeyboardAwareScrollView style={{width: '100%'}}>
-        <Image
-          style={Styles.logo}
-          source={require('../../assets/images/logo.png')}
-        />
-        <View style={Styles.form}>
-          <CustomText weight="semi" style={Styles.title}>
-            Login
-          </CustomText>
-          <View style={Styles.input}>
-            <EmailIcon />
-            <TextInput
-              style={Styles.textInput}
-              textContentType="emailAddress"
-              placeholder="email"
-              value={email}
-              onChangeText={text => setEmail(text)}
-            />
-          </View>
-          <View style={Styles.input}>
-            <PasswordIcon />
-            <TextInput
-              style={Styles.textInput}
-              secureTextEntry={true}
-              textContentType="password"
-              placeholder="password"
-              value={password}
-              onChangeText={text => setPassword(text)}
-            />
-          </View>
-          <Button style={{marginTop: 8}} text="Login" onPress={loginUser} />
-          <CustomText style={Styles.keterangan}>
-            Belum punya akun?{' '}
-            <CustomText
-              weight="bold"
-              onPress={() => navigation.navigate('Register')}
-              style={Styles.link}>
-              Daftar
+      <SafeAreaView style={Styles.container}>
+        <KeyboardAwareScrollView style={{width: '100%'}}>
+          <Image
+            style={Styles.logo}
+            source={require('../../assets/images/logo.png')}
+          />
+          <View style={Styles.form}>
+            <CustomText weight="semi" style={Styles.title}>
+              Login
             </CustomText>
-          </CustomText>
-        </View>
-      </KeyboardAwareScrollView>
-    </SafeAreaView>
+            <View style={Styles.input}>
+              <EmailIcon />
+              <TextInput
+                style={Styles.textInput}
+                textContentType="emailAddress"
+                placeholder="email"
+                value={email}
+                onChangeText={text => setEmail(text)}
+              />
+            </View>
+            <View style={Styles.input}>
+              <PasswordIcon />
+              <TextInput
+                style={Styles.textInput}
+                secureTextEntry={true}
+                textContentType="password"
+                placeholder="password"
+                value={password}
+                onChangeText={text => setPassword(text)}
+              />
+            </View>
+            <Button style={{marginTop: 8}} text="Login" onPress={loginUser} />
+            <CustomText style={Styles.keterangan}>
+              Belum punya akun?{' '}
+              <CustomText
+                weight="bold"
+                onPress={() => navigation.navigate('Register')}
+                style={Styles.link}>
+                Daftar
+              </CustomText>
+            </CustomText>
+          </View>
+        </KeyboardAwareScrollView>
+      </SafeAreaView>
+    </>
   )
 }
 
