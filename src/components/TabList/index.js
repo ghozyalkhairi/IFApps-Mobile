@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native'
-import CustomText from '../CustomText'
 import {fetchData} from '../../request'
 import Styles from './styles'
 import TabMenuContent from '../TabMenuContent'

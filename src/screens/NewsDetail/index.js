@@ -1,10 +1,37 @@
-import {SafeAreaView, TouchableOpacity, Image, ScrollView} from 'react-native'
+import {
+  SafeAreaView,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  Dimensions,
+} from 'react-native'
+import RenderHtml, {defaultSystemFonts} from 'react-native-render-html'
 import LeftArrowBlueIcon from '../../assets/icons/leftArrowBlue.svg'
 import CustomText from '../../components/CustomText'
+import {colors} from '../../theme'
 import Styles from './styles'
 
 const NewsDetail = ({route, navigation}) => {
-  const pengumuman = route.params.pengumuman
+  const {width} = Dimensions.get('window')
+  const {pengumuman, tanggal} = route.params.dataPengumuman
+  const systemFonts = ['Poppins-Regular', ...defaultSystemFonts]
+  const tagsStyles = {
+    h1: {
+      color: colors.primaryBlack,
+      fontFamily: 'Poppins-Regular',
+    },
+    h2: {
+      color: colors.primaryBlack,
+      fontFamily: 'Poppins-Regular',
+    },
+    p: {
+      color: colors.primaryBlack,
+      fontFamily: 'Poppins-Regular',
+    },
+  }
+  const source = {
+    html: pengumuman.content,
+  }
   return (
     <>
       <SafeAreaView style={Styles.container}>
@@ -26,8 +53,13 @@ const NewsDetail = ({route, navigation}) => {
         <CustomText weight="semi" style={Styles.title}>
           {pengumuman.judul}
         </CustomText>
-        <CustomText style={Styles.tanggal}>{pengumuman.tanggal}</CustomText>
-        <CustomText style={Styles.konten}>{pengumuman.konten}</CustomText>
+        <CustomText style={Styles.tanggal}>{tanggal}</CustomText>
+        <RenderHtml
+          source={source}
+          contentWidth={width}
+          systemFonts={systemFonts}
+          tagsStyles={tagsStyles}
+        />
       </ScrollView>
     </>
   )

@@ -24,7 +24,7 @@ const Styles = StyleSheet.create({
   },
   category: {
     backgroundColor: colors.primary,
-    width: '25%',
+    alignSelf: 'flex-start',
     fontSize: 11,
     marginTop: 16,
     borderRadius: 13,

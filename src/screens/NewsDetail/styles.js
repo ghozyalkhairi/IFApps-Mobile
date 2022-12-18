@@ -30,7 +30,7 @@ const Styles = StyleSheet.create({
   },
   kategori: {
     backgroundColor: colors.primary,
-    width: '22%',
+    alignSelf: 'flex-start',
     fontSize: 11,
     marginVertical: 16,
     borderRadius: 13,
