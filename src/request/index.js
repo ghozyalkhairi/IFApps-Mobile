@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const fetchData = async (method, type, token) => {
-  const baseURL = 'http://192.168.1.2:8000/api'
+  const baseURL = 'http://10.0.2.2:8000/api'
   const options =
     type === 'pengumuman'
       ? {
@@ -24,7 +24,7 @@ export const fetchData = async (method, type, token) => {
 }
 
 export const authRegister = async data => {
-  const url = 'http://192.168.1.2:8000/api/auth/register'
+  const url = 'http://10.0.2.2:8000/api/auth/register'
   const options = {
     url,
     method: 'POST',
@@ -39,7 +39,7 @@ export const authRegister = async data => {
 }
 
 export const authLogin = async data => {
-  const url = 'http://192.168.1.2:8000/api/auth/login'
+  const url = 'http://10.0.2.2:8000/api/auth/login'
   const options = {
     url,
     method: 'POST',
@@ -54,7 +54,7 @@ export const authLogin = async data => {
 }
 
 export const updateUser = async (id, data, token) => {
-  const url = `http://192.168.1.2:8000/api/mahasiswa/${id}/update`
+  const url = `http://10.0.2.2:8000/api/mahasiswa/${id}/update`
   const options = {
     url,
     method: 'PATCH',
@@ -72,7 +72,7 @@ export const updateUser = async (id, data, token) => {
 }
 
 export const getUser = async (id, token) => {
-  const url = `http://192.168.1.2:8000/api/mahasiswa/${id}/get`
+  const url = `http://10.0.2.2:8000/api/mahasiswa/${id}/get`
   const options = {
     url,
     method: 'GET',
@@ -89,7 +89,7 @@ export const getUser = async (id, token) => {
 }
 
 export const authLogout = async token => {
-  const url = 'http://192.168.1.2:8000/api/auth/logout'
+  const url = 'http://10.0.2.2:8000/api/auth/logout'
   const options = {
     url,
     method: 'POST',
