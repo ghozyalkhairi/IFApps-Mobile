@@ -2,20 +2,14 @@ import axios from 'axios'
 
 export const fetchData = async (method, type, token) => {
   const baseURL = 'http://192.168.1.2:8000/api'
-  const options =
-    type === 'pengumuman'
-      ? {
-          url: `${baseURL}/${type}`,
-          method,
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          validateStatus: () => true,
-        }
-      : {
-          url: `${baseURL}/${type}`,
-          method,
-        }
+  const options = {
+    url: `${baseURL}/${type}`,
+    method,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    validateStatus: () => true,
+  }
   try {
     return await axios.request(options)
   } catch (err) {

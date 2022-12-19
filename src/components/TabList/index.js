@@ -9,8 +9,10 @@ import {
 import {fetchData} from '../../request'
 import Styles from './styles'
 import TabMenuContent from '../TabMenuContent'
+import {useUser} from '../../stores/userStore'
 
 const TabList = () => {
+  const {token} = useUser()
   const tabs = [
     {
       title: 'Proposal',
@@ -27,7 +29,7 @@ const TabList = () => {
   const [loading, setLoading] = useState(true)
   useEffect(() => {
     setLoading(true)
-    fetchData('GET', 'proposal').then(resp => {
+    fetchData('GET', 'proposal', token).then(resp => {
       setProposal(resp.data.data)
       setLoading(false)
     })
