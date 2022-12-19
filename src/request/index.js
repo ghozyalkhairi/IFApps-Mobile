@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const fetchData = async (method, type, token) => {
-  const baseURL = 'http://192.168.1.2:8000/api'
+  const baseURL = 'http://10.0.2.2:8000/api'
   const options = {
     url: `${baseURL}/${type}`,
     method,
