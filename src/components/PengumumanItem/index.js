@@ -22,7 +22,9 @@ const PengumumanItem = ({pengumuman}) => {
         <View>
           <Image
             style={Styles.foto}
-            source={require('../../assets/images/image_pengumuman.png')}
+            source={{
+              uri: 'http://103.187.146.183/storage/' + pengumuman.gambar,
+            }}
           />
           <CustomText weight="light" style={Styles.category}>
             {pengumuman.kategori}

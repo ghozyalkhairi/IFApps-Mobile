@@ -20,6 +20,7 @@ const Styles = StyleSheet.create({
   },
   foto: {
     width: '100%',
+    height: 180,
     borderRadius: 8,
   },
   category: {
