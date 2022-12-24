@@ -225,6 +225,7 @@ android {
                 keyPassword MYAPP_UPLOAD_KEY_PASSWORD
             }
         }
+
     }
     buildTypes {
         debug {
