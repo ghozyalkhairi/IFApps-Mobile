@@ -8,7 +8,7 @@ const Landing = ({navigation}) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       navigation.navigate('Login')
-    }, 2000)
+    }, 2500)
     return () => clearTimeout(timeout)
   }, [])
   return (
