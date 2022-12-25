@@ -5,8 +5,13 @@ import MenuList from '../../components/MenuList'
 import TabList from '../../components/TabList'
 import Styles from './styles'
 
-const Home = () => {
+const Home = ({navigation}) => {
   const user = useUser()
+  navigation.addListener('beforeRemove', e => {
+    if (user.isLoggedIn) {
+      return e.preventDefault()
+    }
+  })
   return (
     <SafeAreaView style={Styles.container}>
       <View style={Styles.row}>
