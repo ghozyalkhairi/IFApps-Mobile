@@ -16,7 +16,6 @@ const PengumumanList = () => {
       fetchData('GET', 'pengumuman', token)
         .then(resp => {
           setPengumumanData(resp.data.data)
-          console.log(pengumumanData.length)
           setLoading(false)
         })
         .catch(err => console.log(err.message))
@@ -24,27 +23,26 @@ const PengumumanList = () => {
 
     fetchPengumuman()
   }, [])
-  if (loading) return (
-    <ActivityIndicator
-      size={50}
-      color="#000080"
-      style={{marginTop: height * 0.3}}
-    />
-  )
+  if (loading)
+    return (
+      <ActivityIndicator
+        size={50}
+        color="#000080"
+        style={{marginTop: height * 0.3}}
+      />
+    )
   return (
     <>
-      {
-        pengumumanData.length > 0 ? (
-          <FlatList
-            data={pengumumanData}
-            renderItem={({item}) => <PengumumanItem pengumuman={item} />}
-            keyExtractor={item => item.id}
-            style={Styles.container}
-          />
-        ) : (
-          <Text style={Styles.emptyText}>Tidak ada pengumuman</Text>
-        )
-      }
+      {pengumumanData.length > 0 ? (
+        <FlatList
+          data={pengumumanData}
+          renderItem={({item}) => <PengumumanItem pengumuman={item} />}
+          keyExtractor={item => item.id}
+          style={Styles.container}
+        />
+      ) : (
+        <Text style={Styles.emptyText}>Tidak ada pengumuman</Text>
+      )}
     </>
   )
 }
