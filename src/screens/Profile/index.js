@@ -6,6 +6,7 @@ import {
   ToastAndroid,
 } from 'react-native'
 import {useUser, useUserActions} from '../../stores/userStore'
+import notifee from '@notifee/react-native'
 import {authLogout} from '../../request'
 import CustomText from '../../components/CustomText'
 import Styles from './styles'
@@ -28,6 +29,19 @@ const Profile = ({navigation}) => {
       })
       .catch(err => ToastAndroid.show('Network Error'), ToastAndroid.SHORT)
   }
+  const onEditFoto = async () => {
+    const channelId = await notifee.createChannel({
+      id: 'default',
+      name: 'Default Channel',
+    })
+    await notifee.displayNotification({
+      title: 'Update Foto Profil',
+      body: `Halo ${user.name}, kamu bisa mengupdate foto profil kamu di menu edit profile`,
+      android: {
+        channelId,
+      },
+    })
+  }
   return (
     <SafeAreaView style={Styles.container}>
       <View>
@@ -39,7 +53,7 @@ const Profile = ({navigation}) => {
             style={Styles.thumbnail}
             source={require('../../assets/images/foto.png')}
           />
-          <TouchableOpacity style={Styles.editIcon}>
+          <TouchableOpacity onPress={onEditFoto} style={Styles.editIcon}>
             <View style={Styles.edit}>
               <EditIcon />
             </View>

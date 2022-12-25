@@ -17,6 +17,9 @@ import Button from '../../components/Button'
 import Styles from './styles'
 
 const Login = ({navigation}) => {
+  navigation.addListener('beforeRemove', e => {
+    e.preventDefault()
+  })
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const {onUserLogIn} = useUserActions()
