@@ -24,22 +24,27 @@ const PengumumanList = () => {
 
     fetchPengumuman()
   }, [])
+  if (loading) return (
+    <ActivityIndicator
+      size={50}
+      color="#000080"
+      style={{marginTop: height * 0.3}}
+    />
+  )
   return (
     <>
-      {!loading ? (
-        <FlatList
-          contentContainerStyle={Styles.containerNews}
-          keyExtractor={item => item.id}
-          data={pengumumanData}
-          renderItem={({item}) => <PengumumanItem pengumuman={item} />}
-        />
-      ) : (
-        <ActivityIndicator
-          size={50}
-          color="#000080"
-          style={{marginTop: height * 0.3}}
-        />
-      )}
+      {
+        pengumumanData.length > 0 ? (
+          <FlatList
+            data={pengumumanData}
+            renderItem={({item}) => <PengumumanItem pengumuman={item} />}
+            keyExtractor={item => item.id}
+            style={Styles.container}
+          />
+        ) : (
+          <Text style={Styles.emptyText}>Tidak ada pengumuman</Text>
+        )
+      }
     </>
   )
 }
