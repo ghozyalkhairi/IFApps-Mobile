@@ -48,7 +48,6 @@ export const authLogin = async data => {
 }
 
 export const updateUser = async (id, data, token) => {
-  console.log(id, data, token)
   const url = `http://103.187.146.183/api/mahasiswa/${id}/update`
   const options = {
     url,
