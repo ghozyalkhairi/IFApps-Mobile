@@ -9,7 +9,9 @@ const Home = ({navigation}) => {
   const user = useUser()
   navigation.addListener('beforeRemove', e => {
     if (user.isLoggedIn) {
-      return e.preventDefault()
+      e.preventDefault()
+    } else {
+      navigation.dispatch(e.data.action)
     }
   })
   return (
