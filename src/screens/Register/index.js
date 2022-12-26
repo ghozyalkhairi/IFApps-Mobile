@@ -2,7 +2,7 @@ import {Image, SafeAreaView, View, TextInput, ToastAndroid} from 'react-native'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {register} from '../../feature/auth/authThunks'
-import {reset} from '../../feature/auth/authSlice'
+import {reset, selectAuth} from '../../feature/auth/authSlice'
 import CustomText from '../../components/CustomText'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CheckBox from '@react-native-community/checkbox'
@@ -11,9 +11,7 @@ import Styles from './styles'
 
 const Register = ({navigation}) => {
   const dispatch = useDispatch()
-  const {isLoading, isSuccess, isError, message} = useSelector(
-    state => state.auth,
-  )
+  const {isLoading, isSuccess, isError, message} = useSelector(selectAuth)
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
