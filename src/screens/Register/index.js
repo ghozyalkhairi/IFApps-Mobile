@@ -1,13 +1,19 @@
 import {Image, SafeAreaView, View, TextInput, ToastAndroid} from 'react-native'
+import {useState, useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {register} from '../../feature/auth/authThunks'
+import {reset} from '../../feature/auth/authSlice'
 import CustomText from '../../components/CustomText'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CheckBox from '@react-native-community/checkbox'
 import Button from '../../components/Button'
-import {authRegister} from '../../request'
 import Styles from './styles'
-import {useState} from 'react'
 
 const Register = ({navigation}) => {
+  const dispatch = useDispatch()
+  const {isLoading, isSuccess, isError, message} = useSelector(
+    state => state.auth,
+  )
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -37,16 +43,22 @@ const Register = ({navigation}) => {
       email,
       password,
     }
-    authRegister(dataUser)
-      .then(resp => {
-        if (resp.data.status) {
-          ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
-          return navigation.navigate('Login')
-        }
-        ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
-      })
-      .catch(err => ToastAndroid.show('Network Error', ToastAndroid.SHORT))
+    dispatch(register(dataUser))
   }
+  useEffect(() => {
+    if (isLoading.register) {
+      ToastAndroid.show('Register sedang diproses', ToastAndroid.SHORT)
+    }
+    if (isSuccess.register) {
+      ToastAndroid.show('Register berhasil', ToastAndroid.SHORT)
+      dispatch(reset())
+      navigation.navigate('Login')
+    }
+    if (isError.register) {
+      ToastAndroid.show(message, ToastAndroid.SHORT)
+      dispatch(reset())
+    }
+  }, [isSuccess.register, isError.register, isLoading.register])
   return (
     <SafeAreaView style={Styles.container}>
       <KeyboardAwareScrollView style={{width: '100%'}}>

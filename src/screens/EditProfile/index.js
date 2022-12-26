@@ -5,10 +5,11 @@ import {
   TouchableOpacity,
   ToastAndroid,
 } from 'react-native'
-import {useState} from 'react'
-import {useUser, useUserActions} from '../../stores/userStore'
+import {useState, useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {selectAuth, reset} from '../../feature/auth/authSlice'
+import {update} from '../../feature/auth/authThunks'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
-import {updateUser, getUser} from '../../request'
 import CustomText from '../../components/CustomText'
 import LeftArrow from '../../assets/icons/leftarrow.svg'
 import Styles from './styles'
@@ -18,8 +19,8 @@ import PasswordIcon from '../../assets/icons/password.svg'
 import Button from '../../components/Button'
 
 const EditProfile = ({navigation}) => {
-  const user = useUser()
-  const {onUserUpdate} = useUserActions()
+  const dispatch = useDispatch()
+  const {user, isLoading, isError, isSuccess, message} = useSelector(selectAuth)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -37,21 +38,22 @@ const EditProfile = ({navigation}) => {
       password,
       password_confirmation: password,
     }
-    updateUser(user.id, newData, user.token)
-      .then(resp => {
-        if (resp.data.meta.status === 'success')
-          getUser(user.id, user.token)
-            .then(resp => {
-              if (resp.data.meta.status === 'success') {
-                onUserUpdate(resp.data.data)
-                ToastAndroid.show('Berhasil Update Profil', ToastAndroid.SHORT)
-                return navigation.goBack()
-              }
-            })
-            .catch(err => ToastAndroid.show(err.message, ToastAndroid.SHORT))
-      })
-      .catch(err => ToastAndroid.show(err.message, ToastAndroid.SHORT))
+    dispatch(update({id: user.id, data: newData, token: user.token}))
   }
+  useEffect(() => {
+    if (isLoading.update) {
+      ToastAndroid.show('Update sedang diproses', ToastAndroid.SHORT)
+    }
+    if (isSuccess.update) {
+      ToastAndroid.show('Berhasil update profile', ToastAndroid.SHORT)
+      dispatch(reset())
+      navigation.navigate('ProfileScreen')
+    }
+    if (isError.update) {
+      ToastAndroid.show(message, ToastAndroid.SHORT)
+      dispatch(reset())
+    }
+  }, [isSuccess.update, isError.update, isLoading.update])
   return (
     <SafeAreaView style={Styles.container}>
       <KeyboardAwareScrollView>

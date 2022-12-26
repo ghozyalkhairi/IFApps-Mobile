@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import {
   View,
   Text,
@@ -6,13 +6,10 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native'
-import {fetchData} from '../../request'
 import Styles from './styles'
 import TabMenuContent from '../TabMenuContent'
-import {useUser} from '../../stores/userStore'
 
 const TabList = () => {
-  const {token} = useUser()
   const tabs = [
     {
       title: 'Proposal',
@@ -25,15 +22,6 @@ const TabList = () => {
     },
   ]
   const [activeTab, setActiveTab] = useState(tabs[0].title)
-  const [proposal, setProposal] = useState([])
-  const [loading, setLoading] = useState(true)
-  useEffect(() => {
-    setLoading(true)
-    fetchData('GET', 'proposal', token).then(resp => {
-      setProposal(resp.data.data)
-      setLoading(false)
-    })
-  }, [])
   return (
     <View style={Styles.container}>
       <FlatList
@@ -57,15 +45,7 @@ const TabList = () => {
           </TouchableOpacity>
         )}
       />
-      {loading ? (
-        <ActivityIndicator
-          size={40}
-          color="#000080"
-          style={{marginVertical: 65}}
-        />
-      ) : (
-        <TabMenuContent type={activeTab} data={proposal[0]} />
-      )}
+      <TabMenuContent type={activeTab} />
     </View>
   )
 }

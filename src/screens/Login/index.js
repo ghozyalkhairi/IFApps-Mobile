@@ -6,9 +6,10 @@ import {
   ToastAndroid,
   StatusBar,
 } from 'react-native'
-import {useState} from 'react'
-import {authLogin} from '../../request'
-import {useUserActions} from '../../stores/userStore'
+import {useState, useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {selectAuth, reset} from '../../feature/auth/authSlice'
+import {login} from '../../feature/auth/authThunks'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import CustomText from '../../components/CustomText'
 import EmailIcon from '../../assets/icons/email.svg'
@@ -20,9 +21,10 @@ const Login = ({navigation}) => {
   navigation.addListener('beforeRemove', e => {
     e.preventDefault()
   })
+  const dispatch = useDispatch()
+  const {isLoading, isSuccess, isError, message} = useSelector(selectAuth)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const {onUserLogIn} = useUserActions()
   const loginUser = () => {
     if (!email.length || !password.length)
       return ToastAndroid.show(
@@ -33,27 +35,27 @@ const Login = ({navigation}) => {
       email,
       password,
     }
-    authLogin(data)
-      .then(resp => {
-        if (resp.data.status) {
-          ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
-          onUserLogIn({
-            name: resp.data.user.name,
-            email: resp.data.user.email,
-            id: resp.data.user.id,
-            token: resp.data.token,
-          })
-          return navigation.navigate('IFApps', {
-            screen: 'Home',
-            params: {
-              screen: 'HomeScreen',
-            },
-          })
-        }
-        ToastAndroid.show(resp.data.message, ToastAndroid.SHORT)
-      })
-      .catch(err => ToastAndroid.show('Network Error', ToastAndroid.SHORT))
+    dispatch(login(data))
   }
+  useEffect(() => {
+    if (isLoading.login) {
+      ToastAndroid.show('Login sedang diproses', ToastAndroid.SHORT)
+    }
+    if (isSuccess.login) {
+      ToastAndroid.show('Login berhasil', ToastAndroid.SHORT)
+      dispatch(reset())
+      navigation.navigate('IFApps', {
+        screen: 'Home',
+        params: {
+          screen: 'HomeScreen',
+        },
+      })
+    }
+    if (isError.login) {
+      ToastAndroid.show(message, ToastAndroid.SHORT)
+      dispatch(reset())
+    }
+  }, [isSuccess.login, isError.login, isLoading.login])
   return (
     <>
       <StatusBar

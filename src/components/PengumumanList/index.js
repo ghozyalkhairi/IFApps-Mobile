@@ -1,29 +1,33 @@
-import {useEffect, useState} from 'react'
-import {FlatList, ActivityIndicator, Dimensions} from 'react-native'
+import {useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {selectAuth} from '../../feature/auth/authSlice'
+import {selectPengumuman} from '../../feature/pengumuman/pengumumanSlice'
+import {getPengumuman} from '../../feature/pengumuman/pengumumanThunks'
+import {
+  FlatList,
+  ActivityIndicator,
+  Dimensions,
+  Text,
+  ToastAndroid,
+} from 'react-native'
 import PengumumanItem from '../PengumumanItem'
-import {fetchData} from '../../request'
-import {useUser} from '../../stores/userStore'
 import Styles from './styles'
 
 const PengumumanList = () => {
-  const {token} = useUser()
-  const [pengumumanData, setPengumumanData] = useState([])
+  const dispatch = useDispatch()
+  const {user} = useSelector(selectAuth)
+  const {pengumuman, isLoading, isError, message} =
+    useSelector(selectPengumuman)
   const {height} = Dimensions.get('window')
-  const [loading, setLoading] = useState(true)
   useEffect(() => {
-    const fetchPengumuman = async () => {
-      setLoading(true)
-      fetchData('GET', 'pengumuman', token)
-        .then(resp => {
-          setPengumumanData(resp.data.data)
-          setLoading(false)
-        })
-        .catch(err => console.log(err.message))
-    }
-
-    fetchPengumuman()
+    dispatch(getPengumuman({token: user.token}))
   }, [])
-  if (loading)
+  useEffect(() => {
+    if (isError) {
+      ToastAndroid.show(message, ToastAndroid.SHORT)
+    }
+  }, [isError])
+  if (isLoading)
     return (
       <ActivityIndicator
         size={50}
@@ -33,9 +37,9 @@ const PengumumanList = () => {
     )
   return (
     <>
-      {pengumumanData.length > 0 ? (
+      {pengumuman?.length > 0 ? (
         <FlatList
-          data={pengumumanData}
+          data={pengumuman}
           renderItem={({item}) => <PengumumanItem pengumuman={item} />}
           keyExtractor={item => item.id}
           style={Styles.container}

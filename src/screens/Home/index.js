@@ -1,18 +1,18 @@
 import {Image, SafeAreaView, View} from 'react-native'
+import {useSelector} from 'react-redux'
+import {selectAuth} from '../../feature/auth/authSlice'
 import CustomText from '../../components/CustomText'
-import {useUser} from '../../stores/userStore'
 import MenuList from '../../components/MenuList'
 import TabList from '../../components/TabList'
 import Styles from './styles'
 
 const Home = ({navigation}) => {
-  const user = useUser()
+  const {user} = useSelector(selectAuth)
   navigation.addListener('beforeRemove', e => {
     if (user.isLoggedIn) {
-      e.preventDefault()
-    } else {
-      navigation.dispatch(e.data.action)
+      return e.preventDefault()
     }
+    return navigation.dispatch(e.data.action)
   })
   return (
     <SafeAreaView style={Styles.container}>
