@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import {getPengumuman} from './pengumumanThunks'
+import {logout} from '../auth/authThunks'
 
 const initialState = {
   pengumuman: [],
@@ -29,7 +30,8 @@ export const pengumumanSlice = createSlice({
         state.isLoading = false
         state.isError = true
         state.message = action.payload
-      }),
+      })
+      .addCase(logout.fulfilled, state => initialState),
 })
 
 export const selectPengumuman = state => state.pengumuman

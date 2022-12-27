@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import {getProposal} from './proposalThunks'
+import {logout} from '../auth/authThunks'
 
 const initialState = {
   proposal: [],
@@ -29,7 +30,8 @@ const proposalSlice = createSlice({
         state.isLoading = false
         state.isError = true
         state.message = action.payload
-      }),
+      })
+      .addCase(logout.fulfilled, state => initialState),
 })
 
 export const {reset} = proposalSlice.actions
