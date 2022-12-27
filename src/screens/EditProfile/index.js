@@ -21,8 +21,8 @@ import Button from '../../components/Button'
 const EditProfile = ({navigation}) => {
   const dispatch = useDispatch()
   const {user, isLoading, isError, isSuccess, message} = useSelector(selectAuth)
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
+  const [name, setName] = useState(user.name)
+  const [email, setEmail] = useState(user.email)
   const [password, setPassword] = useState('')
   const onEditProfile = () => {
     if (!name.length || !email.length || !password.length)
